@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5cehdnwjmck0"]
+
+[ext_resource type="PackedScene" uid="uid://p1he12k6vltq" path="res://scenes/player.tscn" id="1_tx7pg"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_tx7pg")]
+position = Vector2(571, 326)
+
+[node name="Marker2D" type="Marker2D" parent="CharacterBody2D"]
+
+[node name="Timer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.2
+one_shot = true

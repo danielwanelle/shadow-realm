@@ -10,9 +10,3 @@ script = ExtResource("1_x75b6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_e5m8q")
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(32, 0, -24, -16, -24, 16)
-
-[node name="Node2D" type="Node2D" parent="Polygon2D"]
-position = Vector2(41, 0)
