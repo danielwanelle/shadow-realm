@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5cehdnwjmck0"]
+[gd_scene load_steps=3 format=3 uid="uid://b5cehdnwjmck0"]
 
+[ext_resource type="Script" uid="uid://dr2w26wijnyjy" path="res://scripts/board_mananger.gd" id="1_gi7kc"]
 [ext_resource type="PackedScene" uid="uid://p1he12k6vltq" path="res://scenes/player.tscn" id="1_tx7pg"]
 
-[node name="Node2D" type="Node2D"]
+[node name="stage" type="Node2D"]
+
+[node name="board_mananger" type="Node2D" parent="."]
+script = ExtResource("1_gi7kc")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_tx7pg")]
 position = Vector2(571, 326)

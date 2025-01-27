@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bu8474ldt3bdx"]
+
+[ext_resource type="Script" uid="uid://bs8bykq27iydh" path="res://scripts/tiles/outer_wall_tile.gd" id="1_fn1qx"]
+[ext_resource type="Texture2D" uid="uid://bdwyuuq4nna3d" path="res://assets/sprites/chao_e_paredes/tile_0057.png" id="2_fn1qx"]
+[ext_resource type="Texture2D" uid="uid://ckvn2qnwxm1s3" path="res://assets/sprites/chao_e_paredes/tile_0014.png" id="3_fn1qx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qdof0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fn1qx")
+}],
+"loop": true,
+"name": &"01",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fn1qx")
+}],
+"loop": true,
+"name": &"02",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pt0s"]
+size = Vector2(16, 16)
+
+[node name="outer_wall_tile" type="StaticBody2D"]
+script = ExtResource("1_fn1qx")
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_qdof0")
+animation = &"02"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2pt0s")
