@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shadow Realm"
-run/main_scene="res://scenes/player.tscn"
+run/main_scene="uid://c3s44veytmqfr"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [display]
