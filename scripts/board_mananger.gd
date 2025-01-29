@@ -1,11 +1,12 @@
 extends Node2D
 
 @export var floor_tile: PackedScene
-@export var outer_wall_tile : PackedScene
+@export var outer_wall_tile: PackedScene
 
-var column := 48
-var rows := 32
-var space := 16
+const COLUMN := 24
+const ROWS := 24
+const SPACE := 16
+
 var grid_position := []
 
 func _ready() -> void:
@@ -13,29 +14,45 @@ func _ready() -> void:
 		floor_tile = load("res://scenes/floor_tile.tscn")
 	if outer_wall_tile == null:
 		outer_wall_tile = load("res://scenes/outer_wall_tile.tscn")
-	initialize_list()
-	bord_setup()
 	
+	# Verifica se os tiles foram carregados corretamente
+	assert(floor_tile != null, "Erro: floor_tile não foi carregado!")
+	assert(outer_wall_tile != null, "Erro: outer_wall_tile não foi carregado!")
+	
+	initialize_list()
+	board_setup()
+
+# Inicializa a lista de posições do grid
 func initialize_list() -> void:
 	grid_position.clear()
-	for x in column -1:
-		for y in rows -1:
-			grid_position.append(Vector2(x * space, y * space))
+	for x in range(COLUMN - 1):
+		for y in range(ROWS - 1):
+			grid_position.append(Vector2(x * SPACE, y * SPACE))
 
-func bord_setup() -> void:
-	for x in range(-1, column + 1):
-		for y in range(-1, rows + 1):
-			var temp = null
-			if x == -1 or x == column or y == -1 or y == rows:
-				if outer_wall_tile != null:
-					temp = outer_wall_tile.instantiate()
-				else:
-					print("Erro: outer_wall_tile é null!")
+# Configura o tabuleiro com tiles de chão e paredes externas
+func board_setup() -> void:
+	for x in range(-1, COLUMN + 1):
+		for y in range(-1, ROWS + 1):
+			var tile_instance = null
+			
+			# Decide qual tile instanciar
+			if x == -1 or x == COLUMN or y == -1 or y == ROWS:
+				tile_instance = outer_wall_tile.instantiate() if outer_wall_tile else null
+
+				# 🔄 Chama a função setup_wall_tile para configurar corretamente
+				if tile_instance and tile_instance.has_method("setup_wall_tile"):
+					tile_instance.setup_wall_tile(x + 1, y + 1, COLUMN+1, ROWS+1)  # Ajuste para compensar os índices
+
 			else:
-				if floor_tile != null:
-					temp = floor_tile.instantiate()
-				else:
-					print("Erro: floor_tile é null!")
-				if temp != null:
-					temp.global_position = Vector2(x * space, y * space)
-					add_child(temp)			
+				tile_instance = floor_tile.instantiate() if floor_tile else null
+
+				# 🔄 Chama a função setup_tile para configurar corretamente os tiles do chão
+				if tile_instance and tile_instance.has_method("setup_tile"):
+					tile_instance.setup_tile(x, y, COLUMN - 1, ROWS - 1)
+
+			# Adiciona o tile à cena
+			if tile_instance:
+				tile_instance.global_position = Vector2(x * SPACE, y * SPACE)
+				add_child(tile_instance)
+			else:
+				print("Erro: Não foi possível instanciar o tile em (", x, ",", y, ")")

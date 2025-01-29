@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 150.0
 const SPELL_SCENE = preload("res://scenes/spell.tscn")
 
 var cast  = Vector2.DOWN
@@ -34,6 +34,8 @@ func _physics_process(delta: float) -> void:
 	if cast.x or cast.y:
 		if spell_cooldown.is_stopped():
 			cast_spell(cast.x, cast.y)
+	else:
+		animation.scale.x = 1
 	
 	if direction.x != 0 or direction.y != 0:
 		last_direction.x = direction.x
@@ -63,12 +65,30 @@ func cast_spell(h_cast, v_cast):
 			state = "att"
 		else:
 			state = "att"
+		
 	if cast.x == 0 and cast.y == 0:
 		state = ""
 
-func _set_state():	
-	if !Input.is_anything_pressed() and !animation.is_playing():
-		animation.scale.x = 1
+func _set_state():
+	var direction_mov = {"move_up": "mov_up",
+						"move_down": "mov_down",
+						"move_left": "mov_left",
+						"move_right": "mov_right"}
+	var moving = false
+	for action in direction_mov.keys():
+		if Input.is_action_pressed(action):
+			moving = true
+	
+	var direction_att = {"ui_up": "att",
+						"ui_down": "att",
+						"ui_left": "att",
+						"ui_right": "att"}
+	var attacking = false
+	for action in direction_att.keys():
+		if Input.is_action_pressed(action):
+			attacking = true
+
+	if !moving and !attacking:
 		if last_direction.x > 0:
 			state = "right"
 		elif last_direction.x < 0:
@@ -77,14 +97,16 @@ func _set_state():
 			state = "down"
 		elif last_direction.y < 0:
 			state = "up"
-	elif direction.x == 1:
-		state = "mov_right"
-	elif direction.x == -1:
-		state = "mov_left"
-	elif direction.y == 1:
-		state = "mov_down"
-	elif direction.y == -1:
-		state = "mov_up"
+	
+	if moving and !attacking:
+		if direction.x == 1:
+			state = "mov_right"
+		elif direction.x == -1:
+			state = "mov_left"
+		elif direction.y == 1:
+			state = "mov_down"
+		elif direction.y == -1:
+			state = "mov_up"
 	
 	if Input.is_action_just_pressed("1") == true:
 		if last_direction.x > 0:
@@ -118,6 +140,4 @@ func _set_state():
 		state = "att_sp5"
 		
 	if animation.animation != state:
-		print(animation.animation)
-		print(state)
 		animation.play(state)

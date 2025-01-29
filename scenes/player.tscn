@@ -236,7 +236,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("21_4vfid")
 }],
-"loop": false,
+"loop": true,
 "name": &"att",
 "speed": 10.0
 }, {
@@ -458,7 +458,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v16yv")
 }],
-"loop": false,
+"loop": true,
 "name": &"mov_down",
 "speed": 10.0
 }, {
@@ -475,7 +475,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lwli5")
 }],
-"loop": false,
+"loop": true,
 "name": &"mov_left",
 "speed": 10.0
 }, {
@@ -492,7 +492,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_engkl")
 }],
-"loop": false,
+"loop": true,
 "name": &"mov_right",
 "speed": 10.0
 }, {
@@ -509,7 +509,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7w30n")
 }],
-"loop": false,
+"loop": true,
 "name": &"mov_up",
 "speed": 10.0
 }, {
@@ -540,4 +540,4 @@ shape = SubResource("RectangleShape2D_g2els")
 [node name="animated_sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0j382")
-animation = &"att"
+animation = &"ani_cajado"
