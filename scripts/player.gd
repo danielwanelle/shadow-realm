@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+var life = 100; 
+var tempo_decrescimo: float = 3.0
+
 const SPEED = 150.0
 const SPELL_SCENE = preload("res://scenes/spell.tscn")
 
@@ -12,7 +15,21 @@ var last_direction = Vector2.DOWN  # Guarda a última direção do personagem
 @onready var spell_position: Marker2D = $Marker2D
 @onready var spell_cooldown: Timer = $Timer
 
+func _ready():
+	# Inicia o timer para reduzir a vida a cada 3 segundos
+	var timer = Timer.new()
+	timer.wait_time = tempo_decrescimo
+	timer.autostart = true
+	timer.connect("timeout", Callable(self, "_reduzir_vida"))
+	add_child(timer)
+
+func _reduzir_vida():
+	life -= 10
+	life = max(life, 0)  # Garante que a vida não fique negativa
+
 func _physics_process(delta: float) -> void:
+	
+	$Lifebar.value = life #para manter a barra atualizada
 	
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
