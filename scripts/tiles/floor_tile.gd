@@ -38,13 +38,13 @@ func setup_tile(x: int, y: int, max_x: int, max_y: int) -> void:
 		var randomic = randi_range(0,3)
 		match randomic:
 			0:
-				rotation_degrees = 90
+				rotation_degrees = 0
 			1:
-				rotation_degrees = 0
+				rotation_degrees = 90
 			2:
-				rotation_degrees = 0
+				rotation_degrees = 180
 			3:
-				rotation_degrees = 0
+				rotation_degrees = -90
 		var tile = get_weighted_random_tile(floor_tile_meio, floor_tile_weights)
 		play(tile)  # Tiles do meio não giram
 		
