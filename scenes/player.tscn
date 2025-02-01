@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://p1he12k6vltq"]
+[gd_scene load_steps=105 format=3 uid="uid://p1he12k6vltq"]
 
 [ext_resource type="Script" uid="uid://bidebdtfyenls" path="res://scripts/player.gd" id="1_x75b6"]
 [ext_resource type="Texture2D" uid="uid://dtfn5b4fecgl3" path="res://assets/sprites/Mia/movimento/movimento.png" id="2_g2els"]
@@ -73,7 +73,14 @@
 [ext_resource type="Texture2D" uid="uid://dvyd5hppr6rfx" path="res://assets/sprites/Mia/especial7/50.png" id="71_c7iw1"]
 [ext_resource type="Texture2D" uid="uid://dw6cnuyhgvtj1" path="res://assets/sprites/Mia/especial7/51.png" id="72_fccsy"]
 [ext_resource type="Texture2D" uid="uid://e3ip10thh4ct" path="res://assets/sprites/Mia/especial7/52.png" id="73_e4c5e"]
+[ext_resource type="Texture2D" uid="uid://dd0tkkplhhs6x" path="res://assets/sprites/Mia/interaoes/morte1.png" id="74_p21yu"]
 [ext_resource type="PackedScene" uid="uid://baams70ge7p16" path="res://scenes/lifebar.tscn" id="74_qjsmb"]
+[ext_resource type="Texture2D" uid="uid://bkepbcyomv3s3" path="res://assets/sprites/Mia/interaoes/morte2.png" id="75_irpag"]
+[ext_resource type="Texture2D" uid="uid://bqvau3hnyx1nt" path="res://assets/sprites/Mia/interaoes/morte3.png" id="76_bpsgo"]
+[ext_resource type="Texture2D" uid="uid://bha4j1vs7hvkn" path="res://assets/sprites/Mia/interaoes/morte4.png" id="77_jx8is"]
+[ext_resource type="Texture2D" uid="uid://bdau2h365tga1" path="res://assets/sprites/Mia/interaoes/morte5.png" id="78_vx63k"]
+[ext_resource type="Texture2D" uid="uid://bdsqhyy2scvoj" path="res://assets/sprites/Mia/interaoes/morte6.png" id="79_lw0jh"]
+[ext_resource type="Texture2D" uid="uid://cehu617ts4y54" path="res://assets/sprites/Mia/interaoes/morte7.png" id="80_ry8ed"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(16, 24)
@@ -447,6 +454,32 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 2.0,
+"texture": ExtResource("74_p21yu")
+}, {
+"duration": 2.0,
+"texture": ExtResource("75_irpag")
+}, {
+"duration": 2.0,
+"texture": ExtResource("76_bpsgo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_jx8is")
+}, {
+"duration": 2.0,
+"texture": ExtResource("78_vx63k")
+}, {
+"duration": 3.0,
+"texture": ExtResource("79_lw0jh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_ry8ed")
+}],
+"loop": false,
+"name": &"morte",
+"speed": 2.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_71ik6")
 }, {
@@ -529,6 +562,11 @@ animations = [{
 "loop": false,
 "name": &"up",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"usar_item",
+"speed": 5.0
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
@@ -541,7 +579,7 @@ shape = SubResource("RectangleShape2D_g2els")
 [node name="animated_sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0j382")
-animation = &"idle"
+animation = &"morte"
 autoplay = "ani_olhar"
 
 [node name="Lifebar" parent="." instance=ExtResource("74_qjsmb")]

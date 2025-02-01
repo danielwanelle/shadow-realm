@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var life = 100; 
-var tempo_decrescimo: float = 3.0
+var tempo_decrescimo: float = 1.0
 
 const SPEED = 150.0
 const SPELL_SCENE = preload("res://scenes/spell.tscn")
@@ -9,6 +9,7 @@ const SPELL_SCENE = preload("res://scenes/spell.tscn")
 var cast  = Vector2.DOWN
 var direction  = Vector2.DOWN
 var state = ""
+var morte = false
 var last_direction = Vector2.DOWN  # Guarda a última direção do personagem
 
 @onready var animation := $animated_sprite as AnimatedSprite2D
@@ -24,8 +25,11 @@ func _ready():
 	add_child(timer)
 
 func _reduzir_vida():
-	life -= 10
+	life -= 50
 	life = max(life, 0)  # Garante que a vida não fique negativa
+	if life == 0:
+		morte = true
+		state = "morte"
 
 func _physics_process(delta: float) -> void:
 	
@@ -35,12 +39,12 @@ func _physics_process(delta: float) -> void:
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	direction = direction.normalized()
 	
-	if direction.x:
+	if direction.x and !morte:
 		velocity.x = direction.x * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if direction.y:
+	if direction.y and !morte:
 		velocity.y = direction.y * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
@@ -48,13 +52,13 @@ func _physics_process(delta: float) -> void:
 	cast.x = Input.get_axis("ui_left", "ui_right")
 	cast.y = Input.get_axis("ui_up", "ui_down")
 
-	if cast.x or cast.y:
+	if (cast.x or cast.y) and !morte :
 		if spell_cooldown.is_stopped():
 			cast_spell(cast.x, cast.y)
 	else:
 		animation.scale.x = 1
 	
-	if direction.x != 0 or direction.y != 0:
+	if (direction.x != 0 or direction.y != 0) and !morte:
 		last_direction.x = direction.x
 		last_direction.y = direction.y
 	
@@ -105,7 +109,7 @@ func _set_state():
 		if Input.is_action_pressed(action):
 			attacking = true
 
-	if !moving and !attacking:
+	if !moving and !attacking and !morte:
 		if last_direction.x > 0:
 			state = "right"
 		elif last_direction.x < 0:
@@ -115,7 +119,7 @@ func _set_state():
 		elif last_direction.y < 0:
 			state = "up"
 	
-	if moving and !attacking:
+	if moving and !attacking and !morte:
 		if direction.x == 1:
 			state = "mov_right"
 		elif direction.x == -1:
@@ -155,6 +159,7 @@ func _set_state():
 		else:
 			animation.scale.x = 1
 		state = "att_sp5"
-		
+	print(state)
 	if animation.animation != state:
+		print(state)
 		animation.play(state)
