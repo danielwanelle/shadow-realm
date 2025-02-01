@@ -14,12 +14,15 @@ config/name="Shadow Realm"
 run/main_scene="uid://c3s44veytmqfr"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[autoload]
+
+Globals="*res://scripts/globals.gd"
+
 [display]
 
 window/size/viewport_width=832
 window/size/viewport_height=832
 window/size/resizable=false
-window/stretch/scale=2.0
 
 [global_group]
 

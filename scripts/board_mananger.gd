@@ -3,17 +3,17 @@ extends Node2D
 @export var floor_tile: PackedScene
 @export var outer_wall_tile: PackedScene
 
-const COLUMN := 24
-const ROWS := 24
+const COLUMN := 48
+const ROWS := 48
 const SPACE := 16
 
 var grid_position := []
 
 func _ready() -> void:
 	if floor_tile == null:
-		floor_tile = load("res://scenes/floor_tile.tscn")
+		floor_tile = load("res://scenes/tilesmap/floor_tile.tscn")
 	if outer_wall_tile == null:
-		outer_wall_tile = load("res://scenes/outer_wall_tile.tscn")
+		outer_wall_tile = load("res://scenes/tilesmap/outer_wall_tile.tscn")
 	
 	# Verifica se os tiles foram carregados corretamente
 	assert(floor_tile != null, "Erro: floor_tile não foi carregado!")

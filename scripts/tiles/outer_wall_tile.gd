@@ -18,7 +18,7 @@ func setup_wall_tile(x: int, y: int, max_x: int, max_y: int) -> void:
 	if is_quina:
 		animated_sprite.play(outer_walls_quina[0])  # Sempre usa "04" para quinas
 		
-		# 🔄 Aplica rotação para cada quina
+		# Aplica rotação para cada quina
 		if x == max_x and y == 0:  # Quina superior direita (sem rotação)
 			animated_sprite.rotation_degrees = 0
 		elif x == 0 and y == 0:  # Quina superior esquerda (90°)
@@ -39,8 +39,6 @@ func setup_wall_tile(x: int, y: int, max_x: int, max_y: int) -> void:
 	
 	elif is_lado_direito:
 		animated_sprite.play(outer_walls_lados[0])  # Usa "02" para os lados (Direita não gira)
-	
-	print("Parede em (", x, ",", y, ") é", " QUINA" if is_quina else " CIMA" if is_cima else " BAIXO" if is_baixo else " LADO", " - Rotação:", animated_sprite.rotation_degrees)
 	
 func get_weighted_random_wall_tile(tiles: Array, weights: Array) -> String:
 	var total_weight = 0

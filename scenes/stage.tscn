@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5cehdnwjmck0"]
+[gd_scene load_steps=4 format=3 uid="uid://b5cehdnwjmck0"]
 
 [ext_resource type="Script" uid="uid://dr2w26wijnyjy" path="res://scripts/board_mananger.gd" id="1_gi7kc"]
-[ext_resource type="PackedScene" uid="uid://p1he12k6vltq" path="res://scenes/player.tscn" id="1_tx7pg"]
+[ext_resource type="PackedScene" uid="uid://p1he12k6vltq" path="res://scenes/player/player.tscn" id="1_tx7pg"]
+[ext_resource type="PackedScene" uid="uid://b7oi6tasyjq3v" path="res://scenes/Screens/pause_menu.tscn" id="3_kewym"]
 
 [node name="stage" type="Node2D"]
 
@@ -17,3 +18,5 @@ position = Vector2(16, 16)
 [node name="Timer" type="Timer" parent="CharacterBody2D"]
 wait_time = 0.2
 one_shot = true
+
+[node name="pause_menu" parent="." instance=ExtResource("3_kewym")]

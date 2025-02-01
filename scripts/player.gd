@@ -1,10 +1,9 @@
 extends CharacterBody2D
 
-var life = 100; 
 var tempo_decrescimo: float = 1.0
 
 const SPEED = 150.0
-const SPELL_SCENE = preload("res://scenes/spell.tscn")
+const SPELL_SCENE = preload("res://scenes/player/spell.tscn")
 
 var cast  = Vector2.DOWN
 var direction  = Vector2.DOWN
@@ -17,52 +16,62 @@ var last_direction = Vector2.DOWN  # Guarda a última direção do personagem
 @onready var spell_cooldown: Timer = $Timer
 
 func _ready():
-	# Inicia o timer para reduzir a vida a cada 3 segundos
+	 # Inicia o timer para reduzir a vida a cada X segundos
 	var timer = Timer.new()
 	timer.wait_time = tempo_decrescimo
 	timer.autostart = true
 	timer.connect("timeout", Callable(self, "_reduzir_vida"))
 	add_child(timer)
+	
+	# Conecta o sinal animation_finished do AnimatedSprite2D
+	animation.connect("animation_finished", Callable(self, "_on_animation_finished"))
 
 func _reduzir_vida():
-	life -= 50
-	life = max(life, 0)  # Garante que a vida não fique negativa
-	if life == 0:
+	Globals.life -= 50
+	Globals.life = max(Globals.life, 0)  # Garante que a vida não fique negativa
+	if Globals.life == 0:
 		morte = true
-		state = "morte"
 
 func _physics_process(delta: float) -> void:
 	
-	$Lifebar.value = life #para manter a barra atualizada
+	$Lifebar.value = Globals.life #para manter a barra atualizada
 	
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	direction = direction.normalized()
 	
-	if direction.x and !morte:
-		velocity.x = direction.x * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	if direction.y and !morte:
-		velocity.y = direction.y * SPEED
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-		
 	cast.x = Input.get_axis("ui_left", "ui_right")
 	cast.y = Input.get_axis("ui_up", "ui_down")
+	
+	if !morte:
+		if direction.x:
+			velocity.x = direction.x * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if (cast.x or cast.y) and !morte :
-		if spell_cooldown.is_stopped():
-			cast_spell(cast.x, cast.y)
+		if direction.y:
+			velocity.y = direction.y * SPEED
+		else:
+			velocity.y = move_toward(velocity.y, 0, SPEED)
+
+		if (cast.x or cast.y):
+			if spell_cooldown.is_stopped():
+				cast_spell(cast.x, cast.y)
+		else:
+			animation.scale.x = 1
+		
+		if (direction.x != 0 or direction.y != 0):
+			last_direction.x = direction.x
+			last_direction.y = direction.y
+		_set_state()
 	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, SPEED)
 		animation.scale.x = 1
-	
-	if (direction.x != 0 or direction.y != 0) and !morte:
-		last_direction.x = direction.x
-		last_direction.y = direction.y
-	
-	_set_state()
+		state = "morte"
+		if animation.animation != state:
+			animation.play(state)
+		
 	move_and_slide()
 
 func cast_spell(h_cast, v_cast):
@@ -109,7 +118,7 @@ func _set_state():
 		if Input.is_action_pressed(action):
 			attacking = true
 
-	if !moving and !attacking and !morte:
+	if !moving and !attacking:
 		if last_direction.x > 0:
 			state = "right"
 		elif last_direction.x < 0:
@@ -119,7 +128,7 @@ func _set_state():
 		elif last_direction.y < 0:
 			state = "up"
 	
-	if moving and !attacking and !morte:
+	if moving and !attacking:
 		if direction.x == 1:
 			state = "mov_right"
 		elif direction.x == -1:
@@ -159,7 +168,10 @@ func _set_state():
 		else:
 			animation.scale.x = 1
 		state = "att_sp5"
-	print(state)
 	if animation.animation != state:
-		print(state)
 		animation.play(state)
+	
+func _on_animation_finished() -> void:
+	# Se você precisar saber qual animação acabou, pode verificar a propriedade "animation":
+	if animation.animation == "morte":
+		get_tree().change_scene_to_file("res://scenes/Screens/game_over.tscn")

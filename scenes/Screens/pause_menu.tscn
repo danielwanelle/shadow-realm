@@ -1,0 +1,193 @@
+[gd_scene load_steps=14 format=3 uid="uid://b7oi6tasyjq3v"]
+
+[ext_resource type="Shader" uid="uid://y5sq6r7gww0g" path="res://shaders/blur_shader.gdshader" id="1_5d2l8"]
+[ext_resource type="Script" uid="uid://bt0l5fu0vpcok" path="res://scripts/pause_menu.gd" id="1_7l7mv"]
+[ext_resource type="Texture2D" uid="uid://dwn5k8pwuctwg" path="res://assets/sprites/Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Blue_3Slides.png" id="1_kukqi"]
+[ext_resource type="Texture2D" uid="uid://cr8q4ctiwi6mk" path="res://assets/sprites/Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Red_3Slides_Pressed.png" id="2_5d2l8"]
+[ext_resource type="Texture2D" uid="uid://dr68hjd5cv47n" path="res://assets/sprites/Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Disable_3Slides.png" id="3_7l7mv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7l7mv"]
+shader = ExtResource("1_5d2l8")
+shader_parameter/lod = 0.0
+
+[sub_resource type="Theme" id="Theme_v4r4p"]
+default_font_size = 18
+
+[sub_resource type="InputEventAction" id="InputEventAction_v4r4p"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_1s2dm"]
+events = [SubResource("InputEventAction_v4r4p")]
+
+[sub_resource type="Animation" id="Animation_1s2dm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pg_overlay:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pg_overlay/menu_holder:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v4r4p"]
+resource_name = "pause_game"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pg_overlay:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pg_overlay/menu_holder:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_88e76"]
+resource_name = "resume_game"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pg_overlay:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pg_overlay/menu_holder:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_knqa7"]
+_data = {
+&"RESET": SubResource("Animation_1s2dm"),
+&"pause_game": SubResource("Animation_v4r4p"),
+&"resume_game": SubResource("Animation_88e76")
+}
+
+[node name="pause_menu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_7l7mv")
+
+[node name="pg_overlay" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_7l7mv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="menu_holder" type="VBoxContainer" parent="pg_overlay"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -32.0
+offset_right = 96.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_v4r4p")
+
+[node name="resume_button" type="TextureButton" parent="pg_overlay/menu_holder"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_1s2dm")
+texture_normal = ExtResource("1_kukqi")
+texture_pressed = ExtResource("2_5d2l8")
+texture_hover = ExtResource("3_7l7mv")
+
+[node name="Label" type="Label" parent="pg_overlay/menu_holder/resume_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -21.0
+offset_right = 64.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="quit_button2" type="TextureButton" parent="pg_overlay/menu_holder"]
+layout_mode = 2
+texture_normal = ExtResource("1_kukqi")
+texture_pressed = ExtResource("2_5d2l8")
+texture_hover = ExtResource("3_7l7mv")
+
+[node name="Label" type="Label" parent="pg_overlay/menu_holder/quit_button2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -21.0
+offset_right = 64.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_knqa7")
+}
+
+[connection signal="pressed" from="pg_overlay/menu_holder/resume_button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="pg_overlay/menu_holder/quit_button2" to="." method="_on_quit_button_2_pressed"]
