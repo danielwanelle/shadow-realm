@@ -62,5 +62,5 @@ animations = [{
 [node name="floor_tile" type="AnimatedSprite2D"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_m8rv3")
-animation = &"04"
+animation = &"02"
 script = ExtResource("7_3qvet")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7lnrxfbv1gy7"
-path="res://.godot/imported/especial2.png-da8b8fbcf888a37f1f82d8d8b53662df.ctex"
+uid="uid://duhppneu5chix"
+path="res://.godot/imported/usaritem3.png-9500f938f6ce00c94616ac4d369c61a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Mia/especial2/especial2.png"
-dest_files=["res://.godot/imported/especial2.png-da8b8fbcf888a37f1f82d8d8b53662df.ctex"]
+source_file="res://assets/sprites/Mia/usar-item/usaritem3.png"
+dest_files=["res://.godot/imported/usaritem3.png-9500f938f6ce00c94616ac4d369c61a2.ctex"]
 
 [params]
 

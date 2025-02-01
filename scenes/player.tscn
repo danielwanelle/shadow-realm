@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://p1he12k6vltq"]
+[gd_scene load_steps=116 format=3 uid="uid://p1he12k6vltq"]
 
 [ext_resource type="Script" uid="uid://bidebdtfyenls" path="res://scripts/player.gd" id="1_x75b6"]
 [ext_resource type="Texture2D" uid="uid://dtfn5b4fecgl3" path="res://assets/sprites/Mia/movimento/movimento.png" id="2_g2els"]
@@ -73,6 +73,25 @@
 [ext_resource type="Texture2D" uid="uid://dvyd5hppr6rfx" path="res://assets/sprites/Mia/especial7/50.png" id="71_c7iw1"]
 [ext_resource type="Texture2D" uid="uid://dw6cnuyhgvtj1" path="res://assets/sprites/Mia/especial7/51.png" id="72_fccsy"]
 [ext_resource type="Texture2D" uid="uid://e3ip10thh4ct" path="res://assets/sprites/Mia/especial7/52.png" id="73_e4c5e"]
+[ext_resource type="Texture2D" uid="uid://dd0tkkplhhs6x" path="res://assets/sprites/Mia/interaoes/morte1.png" id="74_ljgr3"]
+[ext_resource type="Texture2D" uid="uid://bkepbcyomv3s3" path="res://assets/sprites/Mia/interaoes/morte2.png" id="75_fr8ja"]
+[ext_resource type="Texture2D" uid="uid://bqvau3hnyx1nt" path="res://assets/sprites/Mia/interaoes/morte3.png" id="76_gvmy4"]
+[ext_resource type="Texture2D" uid="uid://bha4j1vs7hvkn" path="res://assets/sprites/Mia/interaoes/morte4.png" id="77_fcu33"]
+[ext_resource type="Texture2D" uid="uid://bdau2h365tga1" path="res://assets/sprites/Mia/interaoes/morte5.png" id="78_qmsq4"]
+[ext_resource type="Texture2D" uid="uid://bdsqhyy2scvoj" path="res://assets/sprites/Mia/interaoes/morte6.png" id="79_5vs2b"]
+[ext_resource type="Texture2D" uid="uid://cehu617ts4y54" path="res://assets/sprites/Mia/interaoes/morte7.png" id="80_a7i4v"]
+[ext_resource type="Texture2D" uid="uid://oj4kw460g14e" path="res://assets/sprites/Mia/usar-item/usaritem1.png" id="81_b5l0c"]
+[ext_resource type="Texture2D" uid="uid://cvyhtxhwso7lm" path="res://assets/sprites/Mia/usar-item/usaritem2.png" id="82_2a33p"]
+[ext_resource type="Texture2D" uid="uid://duhppneu5chix" path="res://assets/sprites/Mia/usar-item/usaritem3.png" id="83_reqs7"]
+[ext_resource type="Texture2D" uid="uid://d2uhhgmmg5wri" path="res://assets/sprites/Mia/usar-item/usaritem4.png" id="84_2yjfb"]
+[ext_resource type="Texture2D" uid="uid://bq64mdxjiemmg" path="res://assets/sprites/Mia/usar-item/usaritem5.png" id="85_dnnjp"]
+[ext_resource type="Texture2D" uid="uid://cfyu1ltu3dpu5" path="res://assets/sprites/Mia/usar-item/usaritem6.png" id="86_wqna8"]
+[ext_resource type="Texture2D" uid="uid://di7gg1cmbd3ro" path="res://assets/sprites/Mia/usar-item/usaritem7.png" id="87_l7gmo"]
+[ext_resource type="Texture2D" uid="uid://bpkoohr7l0af3" path="res://assets/sprites/Mia/usar-item/usaritem8.png" id="88_kft7l"]
+[ext_resource type="Texture2D" uid="uid://fx1agt40sgrj" path="res://assets/sprites/Mia/usar-item/usaritem9.png" id="89_2s4os"]
+[ext_resource type="Texture2D" uid="uid://ogkr0bq755kn" path="res://assets/sprites/Mia/usar-item/usaritem10.png" id="90_2em0j"]
+[ext_resource type="Texture2D" uid="uid://c7o12jtl7s2y6" path="res://assets/sprites/Mia/usar-item/usaritem11.png" id="91_qe2k6"]
+[ext_resource type="Texture2D" uid="uid://d3m0eaw4rxsaf" path="res://assets/sprites/Mia/usar-item/usaritem12.png" id="92_edwuo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(16, 24)
@@ -447,6 +466,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("74_ljgr3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_fr8ja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_gvmy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_fcu33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_qmsq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_5vs2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_a7i4v")
+}],
+"loop": true,
+"name": &"morte",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_71ik6")
 }, {
 "duration": 1.0,
@@ -528,6 +573,47 @@ animations = [{
 "loop": false,
 "name": &"up",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("81_b5l0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_2a33p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_reqs7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_2yjfb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_dnnjp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_wqna8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_l7gmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_kft7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_2s4os")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_2em0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_qe2k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_edwuo")
+}],
+"loop": true,
+"name": &"usar_item",
+"speed": 9.0
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
@@ -540,4 +626,5 @@ shape = SubResource("RectangleShape2D_g2els")
 [node name="animated_sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0j382")
-animation = &"ani_cajado"
+animation = &"morte"
+frame_progress = 0.281444
