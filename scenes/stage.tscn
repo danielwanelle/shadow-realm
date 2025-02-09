@@ -1,22 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5cehdnwjmck0"]
+[gd_scene load_steps=6 format=3 uid="uid://b5cehdnwjmck0"]
 
-[ext_resource type="Script" uid="uid://dr2w26wijnyjy" path="res://scripts/board_mananger.gd" id="1_gi7kc"]
+[ext_resource type="Script" uid="uid://dr2w26wijnyjy" path="res://scripts/stage.gd" id="1_gi7kc"]
 [ext_resource type="PackedScene" uid="uid://p1he12k6vltq" path="res://scenes/player/player.tscn" id="1_tx7pg"]
 [ext_resource type="PackedScene" uid="uid://b7oi6tasyjq3v" path="res://scenes/Screens/pause_menu.tscn" id="3_kewym"]
+[ext_resource type="PackedScene" uid="uid://bno5ombbgkxmj" path="res://scenes/inimigos/goblin.tscn" id="5_2so7o"]
+[ext_resource type="PackedScene" uid="uid://dsdlbkk1o0o5i" path="res://scenes/inimigos/knight.tscn" id="5_vcsse"]
 
-[node name="stage" type="Node2D"]
+[node name="board_mananger" type="Node2D"]
+position = Vector2(12, 12)
 
-[node name="board_mananger" type="Node2D" parent="."]
-position = Vector2(24, 24)
+[node name="stage" type="Node2D" parent="."]
+position = Vector2(36, 36)
 script = ExtResource("1_gi7kc")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_tx7pg")]
-position = Vector2(16, 16)
+[node name="player" parent="." instance=ExtResource("1_tx7pg")]
+position = Vector2(372, 452)
 
-[node name="Marker2D" type="Marker2D" parent="CharacterBody2D"]
+[node name="Marker2D" type="Marker2D" parent="player"]
 
-[node name="Timer" type="Timer" parent="CharacterBody2D"]
+[node name="Timer" type="Timer" parent="player"]
 wait_time = 0.2
 one_shot = true
 
 [node name="pause_menu" parent="." instance=ExtResource("3_kewym")]
+
+[node name="inimigos" type="Node2D" parent="."]
+
+[node name="goblin" parent="inimigos" instance=ExtResource("5_2so7o")]
+position = Vector2(660, 268)
+
+[node name="knight" parent="inimigos" instance=ExtResource("5_vcsse")]
+position = Vector2(348, 268)

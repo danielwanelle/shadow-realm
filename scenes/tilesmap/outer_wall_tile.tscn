@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bu8474ldt3bdx"]
+[gd_scene load_steps=30 format=3 uid="uid://bu8474ldt3bdx"]
 
 [ext_resource type="Script" uid="uid://bs8bykq27iydh" path="res://scripts/tiles/outer_wall_tile.gd" id="1_nxya2"]
 [ext_resource type="Texture2D" uid="uid://ckvn2qnwxm1s3" path="res://assets/sprites/chao_e_paredes/tile_0014.png" id="2_2i7d7"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dincb2bvyhhgo" path="res://assets/sprites/chao_e_paredes/tile_0007b.png" id="5_2wke4"]
 [ext_resource type="Texture2D" uid="uid://t4hq7hkxdauk" path="res://assets/sprites/chao_e_paredes/tile_0007c.png" id="6_k8bmi"]
 [ext_resource type="Texture2D" uid="uid://cvgkj2ctpsgnv" path="res://assets/sprites/chao_e_paredes/tile_0008.png" id="7_5264p"]
+[ext_resource type="Texture2D" uid="uid://dmnkla6qfn1ii" path="res://assets/sprites/chao_e_paredes/tile_0007f.png" id="7_u24jr"]
 [ext_resource type="Texture2D" uid="uid://bi4t5u1yq1a26" path="res://assets/sprites/chao_e_paredes/tile_0008a.png" id="8_u24jr"]
+[ext_resource type="Texture2D" uid="uid://dh2xyklim0stu" path="res://assets/sprites/chao_e_paredes/tile_0007d.png" id="8_um46l"]
+[ext_resource type="Texture2D" uid="uid://bgqbxslvv348p" path="res://assets/sprites/chao_e_paredes/tile_0007e.png" id="9_405s7"]
 [ext_resource type="Texture2D" uid="uid://b1upop08r8hea" path="res://assets/sprites/chao_e_paredes/tile_0008b.png" id="9_um46l"]
 [ext_resource type="Texture2D" uid="uid://cwaao42bp08xh" path="res://assets/sprites/chao_e_paredes/tile_0018.png" id="10_405s7"]
 [ext_resource type="Texture2D" uid="uid://36tyt0cy5sfy" path="res://assets/sprites/chao_e_paredes/tile_0019.png" id="11_6xwyv"]
@@ -17,9 +20,12 @@
 [ext_resource type="Texture2D" uid="uid://3jkgf7o8t34w" path="res://assets/sprites/chao_e_paredes/tile_0020.png" id="15_d6kwq"]
 [ext_resource type="Texture2D" uid="uid://bah1rlilqyj3b" path="res://assets/sprites/chao_e_paredes/tile_0020a.png" id="16_f7nyp"]
 [ext_resource type="Texture2D" uid="uid://ba36oe5b63424" path="res://assets/sprites/chao_e_paredes/tile_0020b.png" id="17_vde3l"]
+[ext_resource type="Texture2D" uid="uid://6esq2kiekjxi" path="res://assets/sprites/chao_e_paredes/tile_0019d.png" id="18_6xwyv"]
 [ext_resource type="Texture2D" uid="uid://ckv1c602x4tgn" path="res://assets/sprites/chao_e_paredes/tile_0028.png" id="18_dn7g0"]
+[ext_resource type="Texture2D" uid="uid://dx76gf3i6eyx" path="res://assets/sprites/chao_e_paredes/tile_0019e.png" id="19_kxejj"]
 [ext_resource type="Texture2D" uid="uid://bdwyuuq4nna3d" path="res://assets/sprites/chao_e_paredes/tile_0057.png" id="19_vpcvh"]
 [ext_resource type="Texture2D" uid="uid://dwp6sl13vw3x6" path="res://assets/sprites/chao_e_paredes/tile_0026.png" id="20_ranys"]
+[ext_resource type="Texture2D" uid="uid://6476h8fys4tq" path="res://assets/sprites/chao_e_paredes/tile_0019f.png" id="20_ucsfb"]
 [ext_resource type="Texture2D" uid="uid://y2v1jbye833" path="res://assets/sprites/chao_e_paredes/tile_0005.png" id="21_i6wc7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qdof0"]
@@ -45,7 +51,16 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_k8bmi")
 }, {
-"duration": 5.0,
+"duration": 1.5,
+"texture": ExtResource("7_u24jr")
+}, {
+"duration": 1.5,
+"texture": ExtResource("8_um46l")
+}, {
+"duration": 1.5,
+"texture": ExtResource("9_405s7")
+}, {
+"duration": 1.5,
 "texture": ExtResource("7_5264p")
 }, {
 "duration": 1.0,
@@ -79,7 +94,16 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_7dv5a")
 }, {
-"duration": 5.0,
+"duration": 1.5,
+"texture": ExtResource("18_6xwyv")
+}, {
+"duration": 1.5,
+"texture": ExtResource("19_kxejj")
+}, {
+"duration": 1.5,
+"texture": ExtResource("20_ucsfb")
+}, {
+"duration": 1.5,
 "texture": ExtResource("15_d6kwq")
 }, {
 "duration": 1.0,
@@ -126,17 +150,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2pt0s"]
-size = Vector2(16, 16)
+size = Vector2(32, 32)
 
 [node name="outer_wall_tile" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_nxya2")
 
 [node name="animated_sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_qdof0")
-animation = &"03"
-frame_progress = 0.731241
+animation = &"01d"
+frame_progress = 0.246437
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_2pt0s")
