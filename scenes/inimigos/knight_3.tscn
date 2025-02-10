@@ -1,12 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://dsdlbkk1o0o5i"]
+[gd_scene load_steps=21 format=3 uid="uid://cu4c07uogfc3s"]
 
-[ext_resource type="Script" uid="uid://cnwubxggvao0l" path="res://scripts/inimigos/knight.gd" id="1_6fgqr"]
-[ext_resource type="Texture2D" uid="uid://q4utdbmpvrll" path="res://assets/sprites/inimigos/soldier/Soldier-Attack01.png" id="3_rp2iv"]
-[ext_resource type="Texture2D" uid="uid://cwc6cdie7vop7" path="res://assets/sprites/inimigos/soldier/Soldier-Attack02.png" id="4_pnp71"]
-[ext_resource type="Texture2D" uid="uid://rnat5drdjsrg" path="res://assets/sprites/inimigos/soldier/Soldier-Attack03.png" id="5_868jp"]
-[ext_resource type="Texture2D" uid="uid://cyrink4owcak4" path="res://assets/sprites/inimigos/soldier/Soldier-Death.png" id="6_ucrir"]
-[ext_resource type="Texture2D" uid="uid://ds4w68n18iucx" path="res://assets/sprites/inimigos/soldier/Soldier-Hurt.png" id="7_2g3qt"]
-[ext_resource type="Texture2D" uid="uid://lefwvkbc1q4j" path="res://assets/sprites/inimigos/soldier/Soldier-Walk.png" id="7_pnp71"]
+[ext_resource type="Script" path="res://scripts/inimigos/knight_3.gd" id="1_vwo4x"]
+[ext_resource type="Texture2D" uid="uid://bbak0e066ck7v" path="res://assets/sprites/inimigos/soldier3/Soldier-Walk_3.png" id="2_a40jf"]
+[ext_resource type="Texture2D" uid="uid://btv30takyqjii" path="res://assets/sprites/inimigos/soldier3/Soldier-Attack01_3.png" id="3_i5odf"]
+[ext_resource type="Texture2D" uid="uid://d3bons6vmjqpc" path="res://assets/sprites/inimigos/soldier3/Soldier-Attack02_3.png" id="4_8g5bs"]
+[ext_resource type="Texture2D" uid="uid://ct8uxhuy4pasg" path="res://assets/sprites/inimigos/soldier3/Soldier-Attack03_3.png" id="5_8lfjs"]
+[ext_resource type="Texture2D" uid="uid://dvsac0jhnmgy2" path="res://assets/sprites/inimigos/soldier3/Soldier-Death_3.png" id="6_rxms0"]
+[ext_resource type="Texture2D" uid="uid://jhhuh6j461vm" path="res://assets/sprites/inimigos/soldier3/Soldier-Hurt_3.png" id="7_ge48l"]
 
 [sub_resource type="Animation" id="Animation_k5l11"]
 length = 0.001
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_pnp71")]
+"values": [ExtResource("2_a40jf")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -61,7 +61,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_rp2iv")]
+"values": [ExtResource("3_i5odf")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -102,7 +102,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_pnp71")]
+"values": [ExtResource("4_8g5bs")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -158,7 +158,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_868jp")]
+"values": [ExtResource("5_8lfjs")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -213,7 +213,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_ucrir")]
+"values": [ExtResource("6_rxms0")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -254,7 +254,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_2g3qt")]
+"values": [ExtResource("7_ge48l")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -296,7 +296,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_pnp71")]
+"values": [ExtResource("2_a40jf")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -349,14 +349,14 @@ radius = 139.09
 [sub_resource type="CircleShape2D" id="CircleShape2D_868jp"]
 radius = 257.194
 
-[node name="knight" type="CharacterBody2D" groups=["enemy"]]
+[node name="knight_3" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 7
-script = ExtResource("1_6fgqr")
+script = ExtResource("1_vwo4x")
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("7_pnp71")
+texture = ExtResource("2_a40jf")
 hframes = 8
 frame = 1
 

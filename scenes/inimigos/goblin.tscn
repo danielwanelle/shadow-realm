@@ -1,11 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://bno5ombbgkxmj"]
+[gd_scene load_steps=19 format=3 uid="uid://bno5ombbgkxmj"]
 
-[ext_resource type="Texture2D" uid="uid://bums1dp7hwxo6" path="res://assets/sprites/inimigos/orc/Orc-Walk.png" id="1_2f4qq"]
 [ext_resource type="Script" uid="uid://d3dfhpkqoa3cq" path="res://scripts/inimigos/goblin.gd" id="1_yiocc"]
-[ext_resource type="Texture2D" uid="uid://dkhcrgglnpthp" path="res://assets/sprites/inimigos/orc/Orc-Attack01.png" id="2_dnnij"]
-[ext_resource type="Texture2D" uid="uid://cm6m41v1ne8kj" path="res://assets/sprites/inimigos/orc/Orc-Attack02.png" id="3_evvtt"]
-[ext_resource type="Texture2D" uid="uid://doplf4pbyc3g0" path="res://assets/sprites/inimigos/orc/Orc-Hurt.png" id="4_k5l11"]
-[ext_resource type="Texture2D" uid="uid://caj76bvp7i4tw" path="res://assets/sprites/inimigos/orc/Orc-Death.png" id="5_mwa7o"]
+[ext_resource type="Texture2D" uid="uid://bh15gnonbi8h6" path="res://assets/sprites/inimigos/orc/Orc-Idle.png" id="2_h0g78"]
+[ext_resource type="Texture2D" uid="uid://dkhcrgglnpthp" path="res://assets/sprites/inimigos/orc/Orc-Attack01.png" id="2_mwa7o"]
+[ext_resource type="Texture2D" uid="uid://cm6m41v1ne8kj" path="res://assets/sprites/inimigos/orc/Orc-Attack02.png" id="3_h0g78"]
+[ext_resource type="Texture2D" uid="uid://caj76bvp7i4tw" path="res://assets/sprites/inimigos/orc/Orc-Death.png" id="4_sxfli"]
+[ext_resource type="Texture2D" uid="uid://doplf4pbyc3g0" path="res://assets/sprites/inimigos/orc/Orc-Hurt.png" id="5_krmkh"]
+[ext_resource type="Texture2D" uid="uid://bums1dp7hwxo6" path="res://assets/sprites/inimigos/orc/Orc-Walk.png" id="6_02fco"]
 
 [sub_resource type="Animation" id="Animation_k5l11"]
 length = 0.001
@@ -19,7 +20,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_2f4qq")]
+"values": [ExtResource("2_h0g78")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -31,7 +32,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [6]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -60,7 +61,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_dnnij")]
+"values": [ExtResource("2_mwa7o")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -101,7 +102,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_evvtt")]
+"values": [ExtResource("3_h0g78")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -156,7 +157,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_mwa7o")]
+"values": [ExtResource("4_sxfli")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -197,7 +198,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_k5l11")]
+"values": [ExtResource("5_krmkh")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -239,7 +240,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_2f4qq")]
+"values": [ExtResource("6_02fco")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -290,13 +291,13 @@ radius = 139.09
 
 [node name="goblin" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_yiocc")
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_2f4qq")
-hframes = 8
+texture = ExtResource("2_h0g78")
+hframes = 6
 frame = 1
 
 [node name="anim" type="AnimationPlayer" parent="."]

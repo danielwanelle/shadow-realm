@@ -45,7 +45,8 @@ scale = Vector2(2.8, 1.8)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_uiofm")
 animation = &"spell_1"
-frame_progress = 0.323176
+autoplay = "spell_1"
+frame_progress = 0.190017
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
