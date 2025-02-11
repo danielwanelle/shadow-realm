@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2csf5yiggac0"]
-
-[ext_resource type="Script" uid="uid://bdfdx0ktku7ip" path="res://scripts/special_5.gd" id="1_l00kj"]
-
-[node name="special_5" type="Area2D"]
-script = ExtResource("1_l00kj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

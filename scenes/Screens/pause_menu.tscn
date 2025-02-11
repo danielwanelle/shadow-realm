@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://b7oi6tasyjq3v"]
 
 [ext_resource type="Shader" uid="uid://y5sq6r7gww0g" path="res://shaders/blur_shader.gdshader" id="1_5d2l8"]
-[ext_resource type="Script" uid="uid://bt0l5fu0vpcok" path="res://scripts/pause_menu.gd" id="1_7l7mv"]
+[ext_resource type="Script" uid="uid://bt0l5fu0vpcok" path="res://scripts/screen/pause_menu.gd" id="1_7l7mv"]
 [ext_resource type="Texture2D" uid="uid://dwn5k8pwuctwg" path="res://assets/sprites/Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Blue_3Slides.png" id="1_kukqi"]
 [ext_resource type="Texture2D" uid="uid://cr8q4ctiwi6mk" path="res://assets/sprites/Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Red_3Slides_Pressed.png" id="2_5d2l8"]
 [ext_resource type="Texture2D" uid="uid://dr68hjd5cv47n" path="res://assets/sprites/Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Disable_3Slides.png" id="3_7l7mv"]

@@ -1,4 +1,5 @@
 extends Node
 
-var life := 100
-var points := 0
+var life
+var points
+var player

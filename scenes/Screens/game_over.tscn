@@ -1,10 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4xv8nyamoteu"]
+[gd_scene load_steps=13 format=3 uid="uid://c4xv8nyamoteu"]
 
-[ext_resource type="Script" uid="uid://0wcj1w7eq1c8" path="res://scripts/game_over.gd" id="1_l4yd5"]
+[ext_resource type="Script" uid="uid://0wcj1w7eq1c8" path="res://scripts/screen/game_over.gd" id="1_l4yd5"]
+[ext_resource type="Texture2D" uid="uid://bf7qlpu8eojaw" path="res://assets/sprites/Mia/game_over_Mia.webp" id="2_6kmog"]
 [ext_resource type="Texture2D" uid="uid://bq0dltbxh5qfp" path="res://assets/sprites/Tiny Swords/Game_Over.png" id="2_cre8k"]
+[ext_resource type="Shader" uid="uid://c7dja3mlfum7g" path="res://shaders/game_over.gdshader" id="2_q6ukj"]
 [ext_resource type="Texture2D" uid="uid://dwn5k8pwuctwg" path="res://assets/sprites/Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Blue_3Slides.png" id="3_q6ukj"]
 [ext_resource type="Texture2D" uid="uid://dr68hjd5cv47n" path="res://assets/sprites/Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Disable_3Slides.png" id="4_6kmog"]
 [ext_resource type="Texture2D" uid="uid://k4hd1fnrgohc" path="res://assets/sprites/Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Hover_3Slides.png" id="5_0mfc5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cre8k"]
+shader = ExtResource("2_q6ukj")
+shader_parameter/glitch_intensity = 0.5
+shader_parameter/glitch_speed = 1.0
+shader_parameter/scanline_strength = 0.3
+shader_parameter/rgb_shift_amount = 0.005
+shader_parameter/glitch_area_center = Vector2(0.5, 0.5)
+shader_parameter/glitch_area_size = Vector2(0.73, 0.42)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2jtsn"]
 
@@ -13,54 +24,78 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("VBoxContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_8bugq"]
-resource_name = "game_over"
-length = 8.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.262745), Color(0, 0, 0, 1)]
-}
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer:modulate")
+tracks/1/path = NodePath("GameOver_Mia:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/GameOver_title:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_cre8k")]
+}
+
+[sub_resource type="Animation" id="Animation_8bugq"]
+resource_name = "game_over"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(1, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOver_Mia:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.0049),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.596078)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/GameOver_title:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [null, SubResource("ShaderMaterial_cre8k")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_56v3a"]
@@ -78,14 +113,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l4yd5")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="GameOver_Mia" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0)
+texture = ExtResource("2_6kmog")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -102,6 +142,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GameOver_title" type="TextureRect" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_cre8k")
 layout_mode = 2
 texture = ExtResource("2_cre8k")
 

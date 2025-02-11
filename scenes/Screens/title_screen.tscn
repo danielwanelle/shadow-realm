@@ -1,17 +1,34 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3s44veytmqfr"]
+[gd_scene load_steps=13 format=3 uid="uid://c3s44veytmqfr"]
 
-[ext_resource type="Script" uid="uid://ratpakmanb2t" path="res://scripts/title_screen.gd" id="1_5idsb"]
+[ext_resource type="Script" uid="uid://ratpakmanb2t" path="res://scripts/screen/title_screen.gd" id="1_5idsb"]
+[ext_resource type="Shader" uid="uid://buqtqfpy6npoq" path="res://shaders/title_screen.gdshader" id="2_62jtw"]
 [ext_resource type="Texture2D" uid="uid://cn4v6meuql7ch" path="res://assets/sprites/tela_inicial/bbbb.webp" id="2_yjou5"]
 [ext_resource type="Texture2D" uid="uid://dwn5k8pwuctwg" path="res://assets/sprites/Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Blue_3Slides.png" id="3_qpakh"]
 [ext_resource type="Texture2D" uid="uid://cr8q4ctiwi6mk" path="res://assets/sprites/Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Red_3Slides_Pressed.png" id="4_o0jci"]
 [ext_resource type="Texture2D" uid="uid://dr68hjd5cv47n" path="res://assets/sprites/Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Disable_3Slides.png" id="5_p6v05"]
 [ext_resource type="Texture2D" uid="uid://k4hd1fnrgohc" path="res://assets/sprites/Tiny Swords/Tiny Swords (Update 010)/UI/Buttons/Button_Hover_3Slides.png" id="6_5u3uw"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wwp3j"]
+shader = ExtResource("2_62jtw")
+shader_parameter/time_speed = 0.612
+shader_parameter/rotation_strength = 0.05
+shader_parameter/pivot_point = Vector2(0.5, 0.2)
+shader_parameter/wave_strength = 0.5
+shader_parameter/wave_frequency = 3.0
+
 [sub_resource type="InputEventAction" id="InputEventAction_v4r4p"]
 action = &"ui_cancel"
 
 [sub_resource type="Shortcut" id="Shortcut_tklts"]
 events = [SubResource("InputEventAction_v4r4p")]
+
+[sub_resource type="Animation" id="Animation_u4qiq"]
+resource_name = "tela_inicial"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_62jtw"]
+_data = {
+&"tela_inicial": SubResource("Animation_u4qiq")
+}
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -23,12 +40,13 @@ grow_vertical = 2
 script = ExtResource("1_5idsb")
 
 [node name="bg" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_wwp3j")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(20.8117, 20.716)
 texture = ExtResource("2_yjou5")
-expand_mode = 2
+expand_mode = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -132,6 +150,11 @@ grow_vertical = 2
 text = "Quit Game"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_62jtw")
+}
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/credits_btn" to="." method="_on_credits_btn_pressed"]

@@ -1,41 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj35qh1cp5qbk"]
+[gd_scene load_steps=8 format=3 uid="uid://cj35qh1cp5qbk"]
 
-[ext_resource type="Script" uid="uid://bvr657ufib1c1" path="res://scripts/spell.gd" id="1_uthfv"]
-[ext_resource type="Texture2D" uid="uid://bf44sxqinpghm" path="res://assets/sprites/projetio/projetio5.png" id="2_om5k2"]
+[ext_resource type="Script" uid="uid://bvr657ufib1c1" path="res://scripts/player/spell.gd" id="1_uthfv"]
+[ext_resource type="Texture2D" uid="uid://j8lfv2ku21uv" path="res://assets/sprites/projetio/projetio-fogo1.png" id="2_2san3"]
+[ext_resource type="Texture2D" uid="uid://caqeomomebqnl" path="res://assets/sprites/projetio/projetio-fogo2.png" id="3_4prc7"]
+[ext_resource type="Texture2D" uid="uid://o2u8861p20e8" path="res://assets/sprites/projetio/projetio-fogo3.png" id="4_v328o"]
+[ext_resource type="Texture2D" uid="uid://bqesvtgpmt6ab" path="res://assets/sprites/projetio/projetio-fogo4.png" id="5_6h4wx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ps1u"]
-size = Vector2(8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_om5k2"]
-atlas = ExtResource("2_om5k2")
-region = Rect2(76, 40, 10, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ol3gn"]
-atlas = ExtResource("2_om5k2")
-region = Rect2(94, 40, 10, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3nstc"]
-atlas = ExtResource("2_om5k2")
-region = Rect2(76, 58, 10, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wkwhk"]
-atlas = ExtResource("2_om5k2")
-region = Rect2(94, 58, 10, 10)
+size = Vector2(56, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uiofm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_om5k2")
+"texture": ExtResource("2_2san3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ol3gn")
+"texture": ExtResource("3_4prc7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3nstc")
+"texture": ExtResource("4_v328o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wkwhk")
+"texture": ExtResource("5_6h4wx")
 }],
 "loop": true,
 "name": &"spell_1",
@@ -44,19 +31,22 @@ animations = [{
 
 [node name="Area2D" type="Area2D" groups=["spells"]]
 position = Vector2(43, 36)
+collision_layer = 8
+collision_mask = 6
 script = ExtResource("1_uthfv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6ps1u")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(-2.08616e-07, -2.08616e-07)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(2.8, 1.8)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_uiofm")
 animation = &"spell_1"
-frame_progress = 0.323176
+autoplay = "spell_1"
+frame_progress = 0.190017
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
