@@ -27,7 +27,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3hnx"]
-radius = 6.0
+radius = 12.0416
 
 [node name="Pocao_vida" type="Area2D"]
 script = ExtResource("1_fxva8")
@@ -37,7 +37,8 @@ texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ctww7")
 autoplay = "default"
-frame_progress = 0.471213
+frame = 3
+frame_progress = 0.206243
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_e3hnx")

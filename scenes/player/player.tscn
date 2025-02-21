@@ -1,4 +1,4 @@
-[gd_scene load_steps=197 format=3 uid="uid://p1he12k6vltq"]
+[gd_scene load_steps=198 format=3 uid="uid://p1he12k6vltq"]
 
 [ext_resource type="Script" uid="uid://bidebdtfyenls" path="res://scripts/player/player.gd" id="1_x75b6"]
 [ext_resource type="Texture2D" uid="uid://bswx7pdnefiia" path="res://assets/sprites/Mia/interaoes/victory1.png" id="6_0yhus"]
@@ -72,7 +72,7 @@
 [ext_resource type="Texture2D" uid="uid://be6l7elhylgtx" path="res://assets/sprites/Mia/special/especial3-4-5/especial345-25.png" id="73_76ube"]
 [ext_resource type="Texture2D" uid="uid://clyvvm25uoe4i" path="res://assets/sprites/Mia/special/especial3-4-5/especial345-26.png" id="74_agxve"]
 [ext_resource type="Texture2D" uid="uid://dd0tkkplhhs6x" path="res://assets/sprites/Mia/interaoes/morte1.png" id="74_p21yu"]
-[ext_resource type="PackedScene" path="res://scenes/player/lifebar.tscn" id="74_qjsmb"]
+[ext_resource type="PackedScene" uid="uid://f8stv78np8l" path="res://scenes/player/lifebar.tscn" id="74_qjsmb"]
 [ext_resource type="Texture2D" uid="uid://b07h72yrr0gwp" path="res://assets/sprites/Mia/special/especial3-4-5/especial345-27.png" id="75_8ue2q"]
 [ext_resource type="Texture2D" uid="uid://bkepbcyomv3s3" path="res://assets/sprites/Mia/interaoes/morte2.png" id="75_irpag"]
 [ext_resource type="Texture2D" uid="uid://bqvau3hnyx1nt" path="res://assets/sprites/Mia/interaoes/morte3.png" id="76_bpsgo"]
@@ -1162,6 +1162,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18q2s"]
+bg_color = Color(0.0922932, 0.651482, 0.873366, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 collision_mask = 22
 script = ExtResource("1_x75b6")
@@ -1182,4 +1189,14 @@ offset_top = -22.0
 offset_right = 18.0
 offset_bottom = -17.0
 max_value = 100.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Shieldbar" parent="." instance=ExtResource("74_qjsmb")]
+visible = false
+offset_left = -18.0
+offset_top = -30.0
+offset_right = 18.0
+offset_bottom = -25.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_18q2s")
+max_value = 50.0
 metadata/_edit_use_anchors_ = true

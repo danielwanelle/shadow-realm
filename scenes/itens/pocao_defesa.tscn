@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccva6me85xewd"]
+
+[ext_resource type="Script" uid="uid://cf3f1a5d4cdke" path="res://scenes/itens/pocao_defesa.gd" id="1_5ryel"]
+[ext_resource type="Texture2D" uid="uid://1qmtche8t85i" path="res://assets/sprites/pocoes/flasks_3_1.png" id="1_jfev6"]
+[ext_resource type="Texture2D" uid="uid://bo5dw733u77ug" path="res://assets/sprites/pocoes/flasks_3_2.png" id="2_5ryel"]
+[ext_resource type="Texture2D" uid="uid://ddp210n2koxip" path="res://assets/sprites/pocoes/flasks_3_3.png" id="3_1ttgm"]
+[ext_resource type="Texture2D" uid="uid://baerwudkmcor5" path="res://assets/sprites/pocoes/flasks_3_4.png" id="4_vmwl3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jfev6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jfev6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5ryel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1ttgm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vmwl3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ryel"]
+radius = 12.0
+
+[node name="PocaoDefesa" type="Area2D"]
+script = ExtResource("1_5ryel")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.96, 2)
+sprite_frames = SubResource("SpriteFrames_jfev6")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5ryel")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

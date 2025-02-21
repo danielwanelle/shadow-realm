@@ -8,6 +8,7 @@ const SPELL_SCENE = preload("res://scenes/player/spell.tscn")
 var cast  = Vector2.DOWN
 var direction  = Vector2.DOWN
 var life = Globals.get("life")
+var shield = Globals.get("shield")
 var state = ""
 var morte = false
 var last_direction = Vector2.DOWN  # Guarda a última direção do personagem
@@ -29,8 +30,18 @@ func _physics_process(delta: float) -> void:
 	if life != null and life > Globals.get("life") and !morte:
 		animation.play("damaged")
 		await animation.animation_finished
-		life = Globals.get("life")
+		var diferenca_de_vida = life - Globals.get("life")
+		shield = Globals.get("shield")
+		
+		if shield != null and shield > 0:
+			Globals.set("shield", shield - diferenca_de_vida)
+			shield -= diferenca_de_vida
+			$Shieldbar.value = shield - diferenca_de_vida
+			Globals.set("life", life)
+			if shield <= 0:
+				$Shieldbar.visible = false
 	if $Lifebar != null and $Lifebar.value != null and Globals.life != null: 
+		life = Globals.get("life")
 		$Lifebar.value = Globals.life #para manter a barra atualizada
 	
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -178,3 +189,7 @@ func coletar_moeda():
 
 func aumentar_vida():
 	Globals.set("life", Globals.life + 50)
+
+func ativar_escudo():
+	Globals.set("shield", 50)
+	$Shieldbar.visible = true
