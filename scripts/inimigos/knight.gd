@@ -154,6 +154,7 @@ func die():
 	move_speed = 0
 	$anim.play("death")
 	await $anim.animation_finished
+	call_deferred("drop_itens")
 	queue_free()
 
 func _on_player_to_shot_body_entered(body: Node2D) -> void:
@@ -162,3 +163,8 @@ func _on_player_to_shot_body_entered(body: Node2D) -> void:
 
 func _on_player_to_shot_body_exited(body: Node2D) -> void:
 	anim.play("running")
+
+func drop_itens():
+	var moeda = preload("res://scenes/itens/moeda.tscn").instantiate()
+	get_parent().add_child(moeda)
+	moeda.position = position + Vector2(randf_range(-20, 20), 0)

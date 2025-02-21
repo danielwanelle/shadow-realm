@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5cehdnwjmck0"]
+
+[ext_resource type="Script" path="res://scripts/stage.gd" id="1_gi7kc"]
+[ext_resource type="PackedScene" uid="uid://p1he12k6vltq" path="res://scenes/player/player.tscn" id="1_tx7pg"]
+[ext_resource type="PackedScene" uid="uid://b7oi6tasyjq3v" path="res://scenes/Screens/pause_menu.tscn" id="3_kewym"]
+[ext_resource type="PackedScene" uid="uid://bno5ombbgkxmj" path="res://scenes/inimigos/goblin.tscn" id="5_2so7o"]
+[ext_resource type="PackedScene" uid="uid://dsdlbkk1o0o5i" path="res://scenes/inimigos/knight.tscn" id="5_vcsse"]
+[ext_resource type="PackedScene" uid="uid://c1efqv4tlqovv" path="res://scenes/itens/moeda.tscn" id="6_2so7o"]
+
+[node name="board_mananger" type="Node2D"]
+position = Vector2(12, 12)
+
+[node name="stage" type="Node2D" parent="."]
+position = Vector2(36, 36)
+script = ExtResource("1_gi7kc")
+
+[node name="player" parent="." instance=ExtResource("1_tx7pg")]
+position = Vector2(372, 452)
+
+[node name="Marker2D" type="Marker2D" parent="player"]
+
+[node name="Timer" type="Timer" parent="player"]
+wait_time = 0.2
+one_shot = true
+
+[node name="pause_menu" parent="." instance=ExtResource("3_kewym")]
+
+[node name="inimigos" type="Node2D" parent="."]
+
+[node name="goblin" parent="inimigos" instance=ExtResource("5_2so7o")]
+position = Vector2(660, 268)
+
+[node name="knight" parent="inimigos" instance=ExtResource("5_vcsse")]
+position = Vector2(348, 268)
+
+[node name="Moeda" parent="." instance=ExtResource("6_2so7o")]
+position = Vector2(277, 414)
+scale = Vector2(2, 2)

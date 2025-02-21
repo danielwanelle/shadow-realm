@@ -11,10 +11,12 @@ var life = Globals.get("life")
 var state = ""
 var morte = false
 var last_direction = Vector2.DOWN  # Guarda a última direção do personagem
+var contador_de_moeda: int = 0
 
 @onready var animation := $animated_sprite as AnimatedSprite2D
 @onready var spell_position: Marker2D = $Marker2D
 @onready var spell_cooldown: Timer = $Timer
+@onready var hud: Label = $"../Hud/Moeda"
 
 func _ready():
 	Globals.set("player", self)
@@ -24,11 +26,12 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if Globals.get("life") == 0:
 		morte = true
-	if life > Globals.get("life") and !morte:
+	if life != null and life > Globals.get("life") and !morte:
 		animation.play("damaged")
 		await animation.animation_finished
 		life = Globals.get("life")
-	$Lifebar.value = Globals.life #para manter a barra atualizada
+	if $Lifebar != null and $Lifebar.value != null and Globals.life != null: 
+		$Lifebar.value = Globals.life #para manter a barra atualizada
 	
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -168,3 +171,10 @@ func _on_animation_finished() -> void:
 	# Se você precisar saber qual animação acabou, pode verificar a propriedade "animation":
 	if animation.animation == "morte":
 		get_tree().change_scene_to_file("res://scenes/Screens/game_over.tscn")
+
+func coletar_moeda():
+	contador_de_moeda += 1
+	hud.text = "Moedas: %d" % contador_de_moeda
+
+func aumentar_vida():
+	Globals.set("life", Globals.life + 50)

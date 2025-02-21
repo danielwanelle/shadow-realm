@@ -72,7 +72,7 @@
 [ext_resource type="Texture2D" uid="uid://be6l7elhylgtx" path="res://assets/sprites/Mia/special/especial3-4-5/especial345-25.png" id="73_76ube"]
 [ext_resource type="Texture2D" uid="uid://clyvvm25uoe4i" path="res://assets/sprites/Mia/special/especial3-4-5/especial345-26.png" id="74_agxve"]
 [ext_resource type="Texture2D" uid="uid://dd0tkkplhhs6x" path="res://assets/sprites/Mia/interaoes/morte1.png" id="74_p21yu"]
-[ext_resource type="PackedScene" uid="uid://baams70ge7p16" path="res://scenes/player/lifebar.tscn" id="74_qjsmb"]
+[ext_resource type="PackedScene" path="res://scenes/player/lifebar.tscn" id="74_qjsmb"]
 [ext_resource type="Texture2D" uid="uid://b07h72yrr0gwp" path="res://assets/sprites/Mia/special/especial3-4-5/especial345-27.png" id="75_8ue2q"]
 [ext_resource type="Texture2D" uid="uid://bkepbcyomv3s3" path="res://assets/sprites/Mia/interaoes/morte2.png" id="75_irpag"]
 [ext_resource type="Texture2D" uid="uid://bqvau3hnyx1nt" path="res://assets/sprites/Mia/interaoes/morte3.png" id="76_bpsgo"]
@@ -1163,7 +1163,7 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
-collision_mask = 6
+collision_mask = 22
 script = ExtResource("1_x75b6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
