@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnt36ax6cxv6m"]
+
+[ext_resource type="Script" uid="uid://2u5eqxt4qtn1" path="res://scripts/inimigos/boss/boss_spell.gd" id="1_2vql5"]
+[ext_resource type="Texture2D" uid="uid://ba5seuaf0mdrg" path="res://assets/sprites/projetio/projetio2-boss3.png" id="2_0por7"]
+[ext_resource type="Texture2D" uid="uid://bi6ebk073lnf7" path="res://assets/sprites/projetio/projetio2-boss4.png" id="3_tckbh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l8cws"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0por7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tckbh")
+}],
+"loop": true,
+"name": &"spell",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m7aq1"]
+radius = 15.1327
+
+[node name="boss_spell" type="Area2D" groups=["spells"]]
+script = ExtResource("1_2vql5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.78814e-07, 0)
+scale = Vector2(0.288194, 0.282143)
+sprite_frames = SubResource("SpriteFrames_l8cws")
+animation = &"spell"
+autoplay = "spell"
+frame_progress = 0.485109
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m7aq1")
