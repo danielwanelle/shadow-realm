@@ -1,15 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5cehdnwjmck0"]
+[gd_scene load_steps=12 format=3 uid="uid://b5cehdnwjmck0"]
 
-[ext_resource type="Script" uid="uid://dr2w26wijnyjy" path="res://scripts/stage.gd" id="1_gi7kc"]
+[ext_resource type="Script" path="res://scripts/stage.gd" id="1_gi7kc"]
 [ext_resource type="PackedScene" uid="uid://p1he12k6vltq" path="res://scenes/player/player.tscn" id="1_tx7pg"]
 [ext_resource type="PackedScene" uid="uid://b7oi6tasyjq3v" path="res://scenes/Screens/pause_menu.tscn" id="3_kewym"]
 [ext_resource type="PackedScene" uid="uid://dsdlbkk1o0o5i" path="res://scenes/inimigos/knight.tscn" id="5_vcsse"]
-[ext_resource type="PackedScene" uid="uid://bddu1c43lhbmr" path="res://scenes/inimigos/goblin_2.tscn" id="5_yd2gm"]
-[ext_resource type="PackedScene" uid="uid://b44q5hyeou53i" path="res://scenes/inimigos/goblin_3.tscn" id="6_0hg5s"]
+[ext_resource type="PackedScene" path="res://scenes/inimigos/goblin_2.tscn" id="5_yd2gm"]
+[ext_resource type="PackedScene" path="res://scenes/inimigos/goblin_3.tscn" id="6_0hg5s"]
 [ext_resource type="PackedScene" uid="uid://bno5ombbgkxmj" path="res://scenes/inimigos/goblin.tscn" id="6_st0q7"]
-[ext_resource type="PackedScene" uid="uid://btgyl26slmat7" path="res://scenes/inimigos/knight_2.tscn" id="8_jl6nj"]
-[ext_resource type="PackedScene" uid="uid://cu4c07uogfc3s" path="res://scenes/inimigos/knight_3.tscn" id="9_e38vs"]
-[ext_resource type="PackedScene" uid="uid://cccmce8l61gss" path="res://scenes/inimigos/squeleton.tscn" id="10_xfx4c"]
+[ext_resource type="PackedScene" path="res://scenes/inimigos/knight_2.tscn" id="8_jl6nj"]
+[ext_resource type="PackedScene" path="res://scenes/inimigos/knight_3.tscn" id="9_e38vs"]
+[ext_resource type="PackedScene" path="res://scenes/inimigos/squeleton.tscn" id="10_xfx4c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vcsse"]
+font_size = 22
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="board_mananger" type="Node2D"]
 position = Vector2(12, 12)
@@ -19,6 +24,7 @@ position = Vector2(36, 36)
 script = ExtResource("1_gi7kc")
 
 [node name="player" parent="." instance=ExtResource("1_tx7pg")]
+z_index = 1
 position = Vector2(372, 452)
 
 [node name="Marker2D" type="Marker2D" parent="player"]
@@ -53,3 +59,13 @@ position = Vector2(644, 60)
 
 [node name="squeleton" parent="inimigos" instance=ExtResource("10_xfx4c")]
 position = Vector2(652, 156)
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="Moeda" type="Label" parent="Hud"]
+offset_left = 57.0
+offset_top = 55.0
+offset_right = 136.0
+offset_bottom = 78.0
+text = "Moedas: 0"
+label_settings = SubResource("LabelSettings_vcsse")

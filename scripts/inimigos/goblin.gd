@@ -134,4 +134,11 @@ func die():
 	move_speed = 0
 	anim.play("death")
 	await anim.animation_finished
+	call_deferred("drop_itens")
 	queue_free()
+	
+func drop_itens():
+	var moeda = preload("res://scenes/itens/moeda.tscn").instantiate()
+	get_parent().add_child(moeda)
+	moeda.position = position + Vector2(randf_range(-20, 20), 0)
+	
